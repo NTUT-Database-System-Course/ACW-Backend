@@ -1,4 +1,4 @@
-module backend
+module github.com/NTUT-Database-System-Course/ACW-Backend
 
 go 1.23.2
 

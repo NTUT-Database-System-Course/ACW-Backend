@@ -1,26 +1,20 @@
 {
     "swagger": "2.0",
     "info": {
-        "description": "This is a sample server celler server.",
-        "title": "Swagger Example API",
-        "termsOfService": "http://swagger.io/terms/",
         "contact": {
             "name": "API Support",
-            "url": "http://www.swagger.io/support",
-            "email": "support@swagger.io"
+            "url": "https://github.com/NTUT-Database-System-Course/ACW-Backend/issues",
+            "email": "chenshiang@onon1101.org"
         },
         "license": {
             "name": "Apache 2.0",
             "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
-        },
-        "version": "1.0"
+        }
     },
-    "host": "localhost:8080",
-    "basePath": "/api/v1",
     "paths": {
-        "/users/{id}": {
+        "/api/hello": {
             "get": {
-                "description": "根據用戶ID獲取用戶資料",
+                "description": "Print welcome",
                 "consumes": [
                     "application/json"
                 ],
@@ -28,29 +22,28 @@
                     "application/json"
                 ],
                 "tags": [
-                    "用戶"
+                    "User"
                 ],
-                "summary": "獲取用戶資料",
-                "parameters": [
-                    {
-                        "type": "integer",
-                        "description": "用戶ID",
-                        "name": "id",
-                        "in": "path",
-                        "required": true
+                "summary": "Get Welcom",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/other.Msg"
+                        }
                     }
-                ],
-                "responses": {}
+                }
             }
         }
     },
-    "securityDefinitions": {
-        "BasicAuth": {
-            "type": "basic"
+    "definitions": {
+        "other.Msg": {
+            "type": "object",
+            "properties": {
+                "msg": {
+                    "type": "string"
+                }
+            }
         }
-    },
-    "externalDocs": {
-        "description": "OpenAPI",
-        "url": "https://swagger.io/resources/open-api/"
     }
 }

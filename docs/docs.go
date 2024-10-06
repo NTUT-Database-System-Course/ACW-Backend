@@ -9,11 +9,10 @@ const docTemplate = `{
     "info": {
         "description": "{{escape .Description}}",
         "title": "{{.Title}}",
-        "termsOfService": "http://swagger.io/terms/",
         "contact": {
             "name": "API Support",
-            "url": "http://www.swagger.io/support",
-            "email": "support@swagger.io"
+            "url": "https://github.com/NTUT-Database-System-Course/ACW-Backend/issues",
+            "email": "chenshiang@onon1101.org"
         },
         "license": {
             "name": "Apache 2.0",
@@ -24,9 +23,9 @@ const docTemplate = `{
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
     "paths": {
-        "/users/{id}": {
+        "/api/hello": {
             "get": {
-                "description": "根據用戶ID獲取用戶資料",
+                "description": "Print welcome",
                 "consumes": [
                     "application/json"
                 ],
@@ -34,41 +33,40 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "用戶"
+                    "User"
                 ],
-                "summary": "獲取用戶資料",
-                "parameters": [
-                    {
-                        "type": "integer",
-                        "description": "用戶ID",
-                        "name": "id",
-                        "in": "path",
-                        "required": true
+                "summary": "Get Welcom",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/other.Msg"
+                        }
                     }
-                ],
-                "responses": {}
+                }
             }
         }
     },
-    "securityDefinitions": {
-        "BasicAuth": {
-            "type": "basic"
+    "definitions": {
+        "other.Msg": {
+            "type": "object",
+            "properties": {
+                "msg": {
+                    "type": "string"
+                }
+            }
         }
-    },
-    "externalDocs": {
-        "description": "OpenAPI",
-        "url": "https://swagger.io/resources/open-api/"
     }
 }`
 
 // SwaggerInfo holds exported Swagger Info so clients can modify it
 var SwaggerInfo = &swag.Spec{
-	Version:          "1.0",
-	Host:             "localhost:8080",
-	BasePath:         "/api/v1",
+	Version:          "",
+	Host:             "",
+	BasePath:         "",
 	Schemes:          []string{},
-	Title:            "Swagger Example API",
-	Description:      "This is a sample server celler server.",
+	Title:            "",
+	Description:      "",
 	InfoInstanceName: "swagger",
 	SwaggerTemplate:  docTemplate,
 	LeftDelim:        "{{",
