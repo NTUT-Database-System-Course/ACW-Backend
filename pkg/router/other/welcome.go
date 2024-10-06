@@ -10,6 +10,8 @@ type Msg struct {
 	Msg string `json:"msg"`
 }
 
+var msg = map[string]Msg{"hello": {Msg: "Welcome to our API!"}}
+
 // @Summary		Get Welcom
 // @Description	Print welcome
 // @Tags			User
@@ -18,7 +20,5 @@ type Msg struct {
 // @success		200	{object}	Msg
 // @Router			/api/hello [get]
 func WelcomeMsg(c echo.Context) error {
-	return c.JSON(http.StatusOK, Msg{
-		Msg: "welcome",
-	})
+	return c.JSON(http.StatusOK, msg)
 }
