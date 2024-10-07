@@ -6,4 +6,4 @@
 
 language: shell
 script: echo "testing"
-install: skip
+install: sk
