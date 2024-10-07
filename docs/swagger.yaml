@@ -1,39 +1,31 @@
-basePath: /api/v1
-externalDocs:
-  description: OpenAPI
-  url: https://swagger.io/resources/open-api/
-host: localhost:8080
+definitions:
+  other.Msg:
+    properties:
+      msg:
+        type: string
+    type: object
 info:
   contact:
-    email: support@swagger.io
+    email: chenshiang@onon1101.org
     name: API Support
-    url: http://www.swagger.io/support
-  description: This is a sample server celler server.
+    url: https://github.com/NTUT-Database-System-Course/ACW-Backend/issues
   license:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
-  termsOfService: http://swagger.io/terms/
-  title: Swagger Example API
-  version: "1.0"
 paths:
-  /users/{id}:
+  /api/hello:
     get:
       consumes:
       - application/json
-      description: 根據用戶ID獲取用戶資料
-      parameters:
-      - description: 用戶ID
-        in: path
-        name: id
-        required: true
-        type: integer
+      description: Print welcome
       produces:
       - application/json
-      responses: {}
-      summary: 獲取用戶資料
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/other.Msg'
+      summary: Get Welcom
       tags:
-      - 用戶
-securityDefinitions:
-  BasicAuth:
-    type: basic
+      - User
 swagger: "2.0"
