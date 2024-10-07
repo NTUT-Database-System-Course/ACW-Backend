@@ -1,0 +1,5 @@
+language: go
+jobs:
+  include:
+    - stage: compile
+      script: go run main.go
