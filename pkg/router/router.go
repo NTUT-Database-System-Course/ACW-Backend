@@ -4,11 +4,12 @@ import (
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 
+	sqlc "github.com/NTUT-Database-System-Course/ACW-Backend/output/sqlcgen"
 	"github.com/NTUT-Database-System-Course/ACW-Backend/pkg/router/other"
 	"github.com/NTUT-Database-System-Course/ACW-Backend/pkg/router/users"
 )
 
-func NewRouter(e *echo.Echo) {
+func NewRouter(e *echo.Echo, q *sqlc.Queries) {
 	e.Use(middleware.Logger())
 	e.Use(middleware.Recover())
 
@@ -21,9 +22,9 @@ func NewRouter(e *echo.Echo) {
 
 		u := g.Group("/users")
 		{
-			u.GET("/new", users.NewUser)
+			u.GET("/new", users.NewUser(q))
 			u.GET("/update", users.UpdateUser)
-			u.GET("/get", users.GetUser)
+			u.GET("/get", users.GetUser(q))
 			u.GET("/delete", users.DelUser)
 		}
 	}

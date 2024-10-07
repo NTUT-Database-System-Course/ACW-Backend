@@ -1,0 +1,13 @@
+version: "2"
+sql:
+  - engine: "postgresql"
+    queries: "sql/queries/"
+    schema: "sql/table/"
+    # codegen:
+    #   - out: "db/codegen"
+
+    gen:
+      go:
+        package: "sqlc"
+        out: "output/sqlcgen"
+        sql_package: "pgx/v5"

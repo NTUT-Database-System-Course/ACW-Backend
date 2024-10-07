@@ -4,9 +4,9 @@ import (
 	"github.com/labstack/echo/v4"
 	echoSwagger "github.com/swaggo/echo-swagger"
 
+	"github.com/NTUT-Database-System-Course/ACW-Backend/db"
 	"github.com/NTUT-Database-System-Course/ACW-Backend/pkg/config"
 	"github.com/NTUT-Database-System-Course/ACW-Backend/pkg/router"
-
 )
 
 // @contact.name   API Support
@@ -19,9 +19,13 @@ func main() {
 
 	e := echo.New()
 
-	router.NewRouter(e)
+	pool, q := db.NewDB()
+
+	router.NewRouter(e, q)
 
 	e.GET("/swagger/*", echoSwagger.WrapHandler)
 
 	e.Logger.Fatal(e.Start(":8080"))
+
+	pool.Close()
 }
