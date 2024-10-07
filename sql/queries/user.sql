@@ -23,3 +23,22 @@
 -- -- name: DeleteAuthor :exec
 -- DELETE FROM authors
 -- WHERE id = $1;
+
+-- name: GetUsers :many
+SELECT id, username
+FROM "user";
+
+-- name: CreateUser :one
+INSERT INTO "user" (
+    username, email 
+) VALUES (
+    $1, $2
+)
+RETURNING *;
+
+-- INSERT INTO authors (
+--   name, bio
+-- -- ) VALUES (
+--   $1, $2
+-- )
+-- RETURNING *;

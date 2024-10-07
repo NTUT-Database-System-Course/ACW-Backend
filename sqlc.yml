@@ -3,8 +3,11 @@ sql:
   - engine: "postgresql"
     queries: "sql/queries/"
     schema: "sql/table/"
+    # codegen:
+    #   - out: "db/codegen"
+
     gen:
       go:
-        package: "tutorial"
-        out: "tutorial"
+        package: "sqlc"
+        out: "output/sqlcgen"
         sql_package: "pgx/v5"
