@@ -1,0 +1,10 @@
+# language: go
+# jobs:
+#   include:
+#     - stage: compile
+#       script: go run main.go
+
+language: shell
+script: echo "testing"
+install: skip
+
